@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+
+<head>
+    <th:block th:replace="/fragments/_head.html::head"></th:block>
+</head>
+
+<body>
+    <th:block th:replace="/fragments/_header.html::header"></th:block>
+
+
+    <!-- Header Start -->
+    <div class="jumbotron jumbotron-fluid bg-jumbotron" style="margin-bottom: 90px;">
+        <div class="container text-center py-5">
+            <h3 class="text-white display-3 mb-4">A Propos</h3>
+            <div class="d-inline-flex align-items-center text-white">
+                <p class="m-0"><a class="text-white" th:href="@{/}">Accueil</a></p>
+                <i class="bi bi-circle px-3"></i>
+                <p class="m-0">A Propos</p>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- A Propos Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 pb-5 pb-lg-0">
+                    <img class="img-fluid w-75" th:src="@{/assets/img/about.jpg}" alt="">
+                </div>
+                <div class="col-lg-6">
+                    <h6 class="d-inline-block text-primary text-uppercase bg-light py-1 px-2">A Propos De Nous</h6>
+                    <h1 class="mb-4">Eyang Beauty & Spa, votre meilleur centre de beauté</h1>
+                    <p class="pl-4 border-left border-primary">Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd erat duo eos et erat</p>
+                    <div class="row pt-3">
+                        <div class="col-6">
+                            <div class="bg-light text-center p-4">
+                                <h3 class="display-4 text-primary" data-toggle="counter-up">99</h3>
+                                <h6 class="text-uppercase">Spa Spécialistes</h6>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="bg-light text-center p-4">
+                                <h3 class="display-4 text-primary" data-toggle="counter-up">999</h3>
+                                <h6 class="text-uppercase">Clients satisfaits</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- A Propos End -->
+
+
+    <!-- Testimonial Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 pb-5 pb-lg-0">
+                    <img class="img-fluid w-100" th:src="@{/assets/img/testimonial.jpg}" alt="">
+                </div>
+                <div class="col-lg-6">
+                    <h6 class="d-inline-block text-primary text-uppercase bg-light py-1 px-2">Témoignage</h6>
+                    <h1 class="mb-4">Ils parlent de nous !</h1>
+                    <div class="owl-carousel testimonial-carousel">
+                        <div class="position-relative">
+                            <i class="bi bi-quote text-primary position-absolute" style="top: -6px; right: 0;"></i>
+                            <div class="d-flex align-items-center mb-3">
+                                <img class="img-fluid rounded-circle" th:src="@{/assets/img/testimonial-client.jpg}" style="width: 60px; height: 60px;" alt="">
+                                <div class="ml-3">
+                                    <h6 class="text-uppercase">Nom du client</h6>
+                                    <span>Profession</span>
+                                </div>
+                            </div>
+                            <p class="m-0">Aliquyam sed elitr elitr erat sed diam ipsum eirmod eos lorem nonumy. Tempor sea ipsum diam  sed clita dolore eos dolores magna erat dolore sed stet justo et dolor.</p>
+                        </div>
+                        <div class="position-relative">
+                            <i class="bi bi-quote text-primary position-absolute" style="top: -6px; right: 0;"></i>
+                            <div class="d-flex align-items-center mb-3">
+                                <img class="img-fluid rounded-circle" th:src="@{/assets/img/testimonial-client.jpg}" style="width: 60px; height: 60px;" alt="">
+                                <div class="ml-3">
+                                    <h6 class="text-uppercase">Nom du client</h6>
+                                    <span>Profession</span>
+                                </div>
+                            </div>
+                            <p class="m-0">Aliquyam sed elitr elitr erat sed diam ipsum eirmod eos lorem nonumy. Tempor sea ipsum diam  sed clita dolore eos dolores magna erat dolore sed stet justo et dolor.</p>
+                        </div>
+                        <div class="position-relative">
+                            <i class="bi bi-quote text-primary position-absolute" style="top: -6px; right: 0;"></i>
+                            <div class="d-flex align-items-center mb-3">
+                                <img class="img-fluid rounded-circle" th:src="@{/assets/img/testimonial-client.jpg}" style="width: 60px; height: 60px;" alt="">
+                                <div class="ml-3">
+                                    <h6 class="text-uppercase">Nom du client</h6>
+                                    <span>Profession</span>
+                                </div>
+                            </div>
+                            <p class="m-0">Aliquyam sed elitr elitr erat sed diam ipsum eirmod eos lorem nonumy. Tempor sea ipsum diam  sed clita dolore eos dolores magna erat dolore sed stet justo et dolor.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
+
+    <th:block th:replace="/fragments/_footer.html::footer"></th:block>
+
+
+    <th:block th:replace="/fragments/_js.html::js"></th:block>
+</body>
+
+</html>

@@ -243,6 +243,7 @@ textarea {
   line-height: inherit;
 }
 
+
 button,
 input {
   overflow: visible;
@@ -2000,6 +2001,7 @@ select.form-control[size], select.form-control[multiple] {
 
 textarea.form-control {
   height: auto;
+  resize: none;
 }
 
 .form-group {

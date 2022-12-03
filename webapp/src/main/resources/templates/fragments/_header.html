@@ -1,0 +1,69 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+
+<th:block th:fragment="header">
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-light d-none d-lg-block">
+        <div class="row py-2 px-lg-5">
+            <div class="col-lg-6 text-left mb-2 mb-lg-0">
+                <div class="d-inline-flex align-items-center">
+                    <small><i class="bi bi-phone mr-2"></i>+237 699 999 999</small>
+                    <small class="px-3">|</small>
+                    <small><i class="bi bi-envelope mr-2"></i>info@eyangbeauty.com</small>
+                </div>
+            </div>
+            <div class="col-lg-6 text-right">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-primary px-2" href="">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                    <a class="text-primary px-2" href="">
+                        <i class="bi bi-twitter"></i>
+                    </a>
+                    <a class="text-primary px-2" href="">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                    <a class="text-primary px-2" href="">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a class="text-primary pl-2" href="">
+                        <i class="bi bi-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+    <!-- Navbar Start -->
+    <div class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
+            <a th:href="@{/}" class="navbar-brand ml-lg-3">
+                <h1 class="m-0 text-primary">Eyang Beauty <span class="text-dark">&  Spa</span></h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
+                <div class="navbar-nav m-auto py-0">
+                    <a th:href="@{/}" class="nav-item nav-link active">Accueil</a>
+                    <a th:href="@{/about}" class="nav-item nav-link">A Propos</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Services</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a th:href="@{/service}" class="dropdown-item">Parcourir nos services</a>
+                            <a th:href="@{/appointment}" class="dropdown-item">Prendre un rendez-vous</a>
+                        </div>
+                    </div>
+                    <a th:href="@{/price}" class="nav-item nav-link">Plan Tarifaire</a>
+                    <a th:href="@{/listofappointment}" class="nav-item nav-link">Rendez-vous</a>
+                </div>
+                <a th:href="@{/contact}" class="btn btn-primary d-none d-lg-block">Contactez-nous</a>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+
+</th:block>
+
+</html>

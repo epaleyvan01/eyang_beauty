@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<!--/* Workaround for bug https://youtrack.jetbrains.com/issue/IDEA-132738 -->
+<!--@thymesVar id="reservationDto" type="com.eyangbeauty.webapp.model.dto.ReservationDto"-->
+<!--*/-->
+<head>
+    <th:block th:replace="/fragments/_head.html::head"></th:block>
+</head>
+
+<body>
+<th:block th:replace="/fragments/_header.html::header"></th:block>
+
+    <!-- Header Start -->
+    <div class="jumbotron jumbotron-fluid bg-jumbotron">
+        <div class="container text-center py-5">
+            <h3 class="text-white display-3 mb-4">Nos Rendez-vous</h3>
+            <div class="d-inline-flex align-items-center text-white">
+                <p class="m-0"><a class="text-white" th:href="@{/}">Accueil</a></p>
+                <i class="bi bi-circle px-3"></i>
+                <p class="m-0">Rendez-vous</p>
+                <i class="bi bi-circle px-3"></i>
+                <p class="m-0">Rendez-vous</p>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <div class="container-fluid py-2">
+        <div class="container justify-content-center py-2">
+            <div class="col-lg-12 pt-5 pb-lg-5">
+                <div class="bg-light p-4 p-lg-5 my-lg-5">
+                    <div class="bg-white">
+                        <div class="d-flex align-items-center justify-content-between border-bottom border-primary p-4">
+                            <h5 class="text-primary text-uppercase m-0">Liste des rendez-vous</h5>
+                        </div>
+                        <div class="p-4">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">client</th>
+                                        <th scope="col">Service demandé</th>
+                                        <th scope="col">date</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="reservationDto : ${reservationDtos}">
+                                        <td scope="row" th:text="${reservationDto.customerDto.fullName}">Nguessong Marie-Ange</td>
+                                        <td>
+                                            <ul>
+                                                <li th:each="serviceDto : ${reservationDto.serviceDtos}" th:text="${serviceDto.name}">Soin de visage</li>
+                                            </ul>
+                                        </td>
+                                        <td th:text="${reservationDto.getDateForm()} + ' à ' + ${reservationDto.getTimeForm()}">5/12/2022</td>
+                                        <td> <a th:href="@{'/detail?id=' + ${reservationDto.id}}"><button type="button" class="btn btn-info rounded-pill"><i class="bi bi-eye"></i></button></a> </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <!-- Pricing End -->
+
+
+    <th:block th:replace="/fragments/_footer.html::footer"></th:block>
+
+
+    <th:block th:replace="/fragments/_js.html::js"></th:block>
+</body>
+
+</html>

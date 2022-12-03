@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<!--/* Workaround for bug https://youtrack.jetbrains.com/issue/IDEA-132738 -->
+<!--@thymesVar id="reservationDto" type="com.eyangbeauty.webapp.model.dto.ReservationDto"-->
+<!--*/-->
+<head>
+    <th:block th:replace="/fragments/_head.html::head"></th:block>
+</head>
+
+<body>
+    <th:block th:replace="/fragments/_header.html::header"></th:block>
+
+
+    <!-- Header Start -->
+    <div class="jumbotron jumbotron-fluid bg-jumbotron">
+        <div class="container text-center py-5">
+            <h3 class="text-white display-3 mb-4">Rendez-vous</h3>
+            <div class="d-inline-flex align-items-center text-white">
+                <p class="m-0"><a class="text-white" th:href="@{/}">Accueil</a></p>
+                <i class="bi bi-circle px-3"></i>
+                <p class="m-0">Rendez-vous</p>
+                <i class="bi bi-circle px-3"></i>
+                <p class="m-0"><a class="text-white" th:href="@{/listappointment}">Liste</a></p>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Open Hours Start -->
+    <div class="container-fluid py-2">
+        <div class="container py-2">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 pt-5 pb-lg-5">
+                    <div class="bg-light p-4 p-lg-5 my-lg-5">
+                        <h6 class="d-inline-block text-white text-uppercase bg-primary py-1 px-2">Détail du rendez-vous</h6>
+                        <ul class="list-inline">
+                            <li class="h6 py-1"><i class="bi bi-circle text-primary mr-3"></i>Nom du client: <strong th:text="${reservationDto.customerDto.fullName}">Nguessong Marie-Ange</strong></li>
+                            <li class="h6 py-1"><i class="bi bi-circle text-primary mr-3"></i>Adresse email: <strong th:text="${reservationDto.customerDto.email}">marieange@gmail.com</strong></li>
+                            <li class="h6 py-1"><i class="bi bi-circle text-primary mr-3"></i>Numéro de téléphone: <strong th:text="${reservationDto.customerDto.phone}">marieange@gmail.com</strong></li>
+                            <li class="h6 py-1" th:each="serviceDto : ${reservationDto.serviceDtos}"><i class="bi bi-circle text-primary mr-3"></i>Service demandé: <strong th:text="${serviceDto.name}">soin de visage</strong></li>
+                            <li class="h6 py-1"><i class="bi bi-circle text-primary mr-3"></i>Date : <strong th:text="${reservationDto.getDateForm()} + ' à ' + ${reservationDto.getTimeForm()}">04/12/2022</strong></li>
+                            <li class="h6 py-1"><i class="bi bi-circle text-primary mr-3"></i>Message : <strong th:text="${reservationDto.message}">marieange@gmail.com</strong></li>
+                        </ul>
+                        <a th:href="@{/listofappointment}" class="btn btn-secondary my-2">Retour</a>
+                        <a href="#" class="btn btn-secondary my-2" data-bs-toggle="modal" data-bs-target="#modifyModal">Modifier</a>
+                        <a href="#" class="btn btn-success my-2" data-bs-toggle="modal" data-bs-target="#cancelModal">Annuler</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Open Hours End -->
+
+    <!-- Modal for modify an element -->
+    <div class="modal fade" id="modifyModal" tabindex="-1" aria-labelledby="modifyModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title">Add an element on the table</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form th:method="post" th:action="@{/updateAppointment}" th:object="${reservationDto}"class="row justify-content-center myForm">
+                        <div class="col-lg-12 row flex-column">
+                            <div class="form-group">
+                                <input type="text" class="form-control disabled p-4" placeholder="Your Name" th:field="*{id}"/>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <div class="form-group">
+                                <input type="text" class="form-control disabled p-4" placeholder="Your Name" th:field="*{customerDto.id}"/>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <div class="form-group">
+                                <input type="text" class="form-control p-4" placeholder="Your Name" th:field="*{customerDto.fullName}" required/>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <div class="form-group">
+                                <input type="email" class="form-control p-4" placeholder="Your Email" th:field="*{customerDto.email}" required/>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <div class="form-group">
+                                <input type="number" class="form-control p-4" placeholder="Your Number" th:field="*{customerDto.phone}" required/>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <div class="form-group">
+                                <select multiple class="custom-select px-4" style="height: 100px;">
+                                    <option selected>Sélectionnez un service</option>
+                                    <option value="1">Service 1</option>
+                                    <option value="2">Service 1</option>
+                                    <option value="3">Service 1</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <div class="form-group">
+                                <div class="date" id="date" data-target-input="nearest">
+                                    <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Select Date" data-target="#date" data-toggle="datetimepicker"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <div class="form-group">
+                                <div class="time" id="time" data-target-input="nearest">
+                                    <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Select Time" data-target="#time" data-toggle="datetimepicker"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <label for="" class="form-label">Message</label>
+                            <textarea class="form-control p-4" name="message" id="" rows="3" placeholder="Dites nous en plus..." th:field="*{message}"></textarea>
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <button type="submit" class="btn btn-outline-success">Validate</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div><!-- End Modal -->
+
+
+    <!-- Modal Body -->
+    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+    <div class="modal fade" id="cancelModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitleId">Annuler la réservation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Voulez-vous vraiment annuler la réservation ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Non</button>
+                    <a th:href="@{'/cancelAppointment?id=' + ${reservationDto.id}}" class="btn btn-outline-danger">Oui</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <th:block th:replace="/fragments/_footer.html::footer"></th:block>
+
+
+    <th:block th:replace="/fragments/_js.html::js"></th:block>
+</body>
+
+</html>
