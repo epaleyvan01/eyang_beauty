@@ -40,13 +40,7 @@ public class ReservationController {
 
     @PostMapping("/appointmentSave")
     public String saveAppointment(@ModelAttribute FormReservation formReservation){
-        System.out.println("==================== La date est : " + formReservation.getDate());
-        System.out.println("==================== L'heure est : " + formReservation.getTime());
-        System.out.println("==================== Le client est : " + formReservation.getCustomerDto().toString());
-        for (String service : formReservation.getServiceDtos()) {
-            // ServiceDto serviceDto = (ServiceDto) serv;
-            System.out.println("==================== Le service est : " + service);
-        }
+        iReservation.save(formReservation);
         return "appointment_success";
     }
 

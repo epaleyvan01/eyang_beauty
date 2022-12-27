@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class FormReservation {
-    private ReservationDto reservationDto;
+    private String message;
     private String date;
     private String time;
     private CustomerDto customerDto;
