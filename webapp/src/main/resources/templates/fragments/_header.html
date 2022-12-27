@@ -1,4 +1,4 @@
-<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="fr">
 
 <th:block th:fragment="header">
     <!-- Topbar Start -->
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <a th:href="@{/price}" class="nav-item nav-link">Plan Tarifaire</a>
-                    <a th:href="@{/listofappointment}" class="nav-item nav-link">Rendez-vous</a>
+                    <a sec:authorize="isAuthenticated()" th:href="@{/listofappointment}" class="nav-item nav-link">Rendez-vous</a>
                 </div>
                 <a th:href="@{/contact}" class="btn btn-primary d-none d-lg-block">Contactez-nous</a>
             </div>

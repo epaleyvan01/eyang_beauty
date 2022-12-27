@@ -24,4 +24,9 @@ public class ServiceImpl implements IService {
                 .map(serviceMapper::toDto)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public ServiceDto findById(String id) {
+        return serviceMapper.toDto(serviceRepository.findById(id).get());
+    }
 }
