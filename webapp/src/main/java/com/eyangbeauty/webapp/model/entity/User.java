@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Table(name = "user", indexes = {
         @Index(name = "username", columnList = "username", unique = true)
@@ -29,4 +30,15 @@ public class User {
 
     @Column(name = "phone", length = 15)
     private String phone;
+
+    @Column(name = "enabled")
+    private int enabled;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "user_role",
+            joinColumns = @JoinColumn(name = "id_user"),
+            inverseJoinColumns = @JoinColumn(name = "id_role")
+    )
+    private Set<Role> roles;
 }

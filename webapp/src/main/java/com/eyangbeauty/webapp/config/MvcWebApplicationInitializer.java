@@ -1,6 +1,5 @@
 package com.eyangbeauty.webapp.config;
 
-import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class MvcWebApplicationInitializer extends

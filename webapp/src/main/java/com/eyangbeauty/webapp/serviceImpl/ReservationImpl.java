@@ -10,6 +10,7 @@ import com.eyangbeauty.webapp.model.dto.ServiceDto;
 import com.eyangbeauty.webapp.model.entity.Reservation;
 import com.eyangbeauty.webapp.repository.ReservationRepository;
 import com.eyangbeauty.webapp.service.ICustomer;
+import com.eyangbeauty.webapp.service.IEmail;
 import com.eyangbeauty.webapp.service.IReservation;
 import com.eyangbeauty.webapp.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class ReservationImpl implements IReservation {
 
     @Autowired
     IService iService;
+
+    @Autowired
+    IEmail iEmail;
 
     @Autowired
     CustomerMapper customerMapper;
@@ -89,6 +93,8 @@ public class ReservationImpl implements IReservation {
 
         //Add messages
         reservation.setMessage(formReservation.getMessage());
+
+        iEmail.sendSimpleMessage(customerDto, formReservation);
 
         return reservationRepository.save(reservation).getId();
     }

@@ -50,12 +50,13 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Services</a>
                         <div class="dropdown-menu rounded-0 m-0">
-                            <a th:href="@{/service}" class="dropdown-item">Parcourir nos services</a>
                             <a th:href="@{/appointment}" class="dropdown-item">Prendre un rendez-vous</a>
+                            <a th:href="@{/service}" class="dropdown-item">Parcourir nos services</a>
                         </div>
                     </div>
-                    <a th:href="@{/price}" class="nav-item nav-link">Plan Tarifaire</a>
-                    <a sec:authorize="isAuthenticated()" th:href="@{/listofappointment}" class="nav-item nav-link">Rendez-vous</a>
+                    <a th:href="@{/price}" class="nav-item nav-link">Nos Tarifs</a>
+                    <a sec:authorize="isAuthenticated()" th:href="@{/listofappointment}" class="nav-item nav-link">Les rendez-vous</a>
+                    <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="nav-item nav-link">Log Out</a>
                 </div>
                 <a th:href="@{/contact}" class="btn btn-primary d-none d-lg-block">Contactez-nous</a>
             </div>

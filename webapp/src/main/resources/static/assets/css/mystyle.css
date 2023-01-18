@@ -1,0 +1,25 @@
+.login{
+    height: 100vh;
+    background-color: #62816d;
+    margin: 0;
+}
+
+.login .col-auto{
+    padding: 0;
+    margin: 0;
+}
+
+.login .card{
+    border: none;
+    background-color: #62816d;
+}
+
+.card .card-header{
+    background-color: #ddd;
+}
+.card .card-body{
+    background-color: #fff;
+}
+.card .card-footer{
+    background-color: #ddd;
+}

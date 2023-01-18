@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+
+<head>
+    <th:block th:replace="/fragments/_head.html::head"></th:block>
+</head>
+
+<body>
+
+    <main class="login row flex-column">
+        <div class="col-auto row justify-content-center">
+            <a href="index.html">
+                <img th:src="@{assets/img/logo.png}" class="logo" alt="LogoAER" width="120px">
+            </a>
+        </div>
+        <div align="center" th:if="${param.error}">
+            <p style="font-size:20px; color: #f56649;">Email or Password invalid, please verify</p>
+        </div>
+        <div class="col-auto">
+            <div class="card m-3 align-items-center">
+                <div class="card-header">
+                    <h4 class="card-title">Connexion au compte</h4>
+                    <small>Entrez votre nom d'utilisateur et votre mot de passe</small>
+                </div>
+                <form th:action="@{/login}" method="POST">
+                    <div class="card-body">
+
+                        <label for="username">Nom d'utilisateur</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-person"></i></span>
+                            <input id="username" name="username" type="text" class="form-control" placeholder="xyz@example.com">
+                        </div>
+                        <label for="password">Mot de passe</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                            <input id="password" name="password" type="password" class="form-control" placeholder="">
+                        </div>
+                        <div class="form-check mb-3">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="remember" checked> Se souvenir de moi
+                            </label>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Connexion</button>
+                        <p>Vous avez oublié votre <a href="#">mot de passe ?</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+
+    <th:block th:replace="/fragments/_js.html::js"></th:block>
+</body>
+
+</html>
